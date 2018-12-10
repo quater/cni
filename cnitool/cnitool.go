@@ -101,7 +101,7 @@ func main() {
 
 	// Generate the containerid by hashing the netns path
 	s := sha512.Sum512([]byte(netns))
-	containerID := fmt.Sprintf("cnitool-%x-" + ifName, s[:10])
+	containerID := fmt.Sprintf(ifName + "-cni-%x", s[:10])
 
 	cninet := libcni.NewCNIConfig(filepath.SplitList(os.Getenv(EnvCNIPath)), nil)
 
